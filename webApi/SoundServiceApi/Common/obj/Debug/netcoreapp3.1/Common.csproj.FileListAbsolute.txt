@@ -1,0 +1,9 @@
+C:\Users\muchiyama\Documents\private\akita\Training\webApi\SoundServiceApi\Common\bin\Debug\netcoreapp3.1\Common.deps.json
+C:\Users\muchiyama\Documents\private\akita\Training\webApi\SoundServiceApi\Common\bin\Debug\netcoreapp3.1\Common.dll
+C:\Users\muchiyama\Documents\private\akita\Training\webApi\SoundServiceApi\Common\bin\Debug\netcoreapp3.1\Common.pdb
+C:\Users\muchiyama\Documents\private\akita\Training\webApi\SoundServiceApi\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfoInputs.cache
+C:\Users\muchiyama\Documents\private\akita\Training\webApi\SoundServiceApi\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfo.cs
+C:\Users\muchiyama\Documents\private\akita\Training\webApi\SoundServiceApi\Common\obj\Debug\netcoreapp3.1\Common.dll
+C:\Users\muchiyama\Documents\private\akita\Training\webApi\SoundServiceApi\Common\obj\Debug\netcoreapp3.1\Common.pdb
+C:\Users\muchiyama\Documents\private\akita\Training\webApi\SoundServiceApi\Common\obj\Debug\netcoreapp3.1\Common.csprojAssemblyReference.cache
+C:\Users\muchiyama\Documents\private\akita\Training\webApi\SoundServiceApi\Common\bin\Debug\netcoreapp3.1\log4net.config
