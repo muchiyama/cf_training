@@ -1,6 +1,6 @@
 # For WebApi
-/bin/*
-/obj/*
-/nginx-1.17.5/*
+/**/bin/*
+/**/obj/*
+/**/nginx-1.17.5/*
 
 /.vscode/*
