@@ -1,8 +1,10 @@
 # For WebApi
-/bin/*
-/obj/*
+/bin/
+/obj/
+/nginx-1.17.5/*
 
 *.vscode
+
 
 # Project Specific rules here
 
