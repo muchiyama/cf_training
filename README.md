@@ -8,7 +8,7 @@ marp: true
 # サバクラApp実装研修
 
 
-![bg right 100%](https://livedoor.blogimg.jp/kita_asu/imgs/f/3/f3798470.png)
+![bg right 100%](https://www.omg-ox.org/wp-content/uploads/2018/05/20160808195558-1.png)
 
 ---
 
@@ -40,7 +40,9 @@ marp: true
     研修にて使用する資料
 - ddl
     DB作成の為のDDL
+
 ![bg right 70%](https://stickershop.line-scdn.net/stickershop/v1/product/1448302/LINEStorePC/main.png;compress=true)
+
 ---
 
 #  クライアントサイドのソースです
@@ -54,6 +56,7 @@ marp: true
     ソースコードが入ってます
     - /template
     htmlのテンプレートファイルが入ってます
+
 ---
 
 #  サーバーサイドのソースです
@@ -67,6 +70,7 @@ marp: true
     サーバー上のコンテンツ情報を更新するバッチ
     - /SoundServiceApi
     コンテンツ情報を返すRestApi
+
 ---
 
 # その他
