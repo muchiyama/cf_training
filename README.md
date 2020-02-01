@@ -18,11 +18,11 @@ marp: true
 2年目エンジニアです
 
 - 趣味: 音楽<br>
-ギターもちょろっと弾きます
+ギターもちょろっと弾きます<br>
 軽音部はいっとります
 
 - 言語: C#<br>
-勉強中
+勉強中<br>
 まだちゃんと書けません
 
 ![bg right 100%](https://pbs.twimg.com/media/CKm3tfvUwAA1XBT.png)
