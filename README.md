@@ -7,7 +7,7 @@ marp: true
 # サバクラApp実装研修
 ### かる～く説明
 
-![bg right 100%](https://www.omg-ox.org/wp-content/uploads/2018/05/20160808195558-1.png)
+
 
 ---
 
@@ -40,8 +40,8 @@ marp: true
     研修にて使用する資料
     - ddl
     DB作成の為のDDL
-
 ![bg right 70%](https://stickershop.line-scdn.net/stickershop/v1/product/1448302/LINEStorePC/main.png;compress=true)
+
 
 ---
 
@@ -82,6 +82,7 @@ marp: true
     - /doc
     ハンズオン資料
     概要 / フロント(モック編) / サーバーサイド / API疎通と4セクションです
+![bg right 100%](https://www.omg-ox.org/wp-content/uploads/2018/05/20160808195558-1.png)
 <!-- ![bg right 70%](https://static.comic-walker.com/sp/uploadimage/characters/2252.jpg) -->
 
 
