@@ -32,13 +32,13 @@ marp: true
 
 # Directory構成
 ###  Rootのディレクトリ構成
-- front
+- front<br>
     クライアントサイド
-- webApi
+- webApi<br>
     サーバーサイド
-- doc
+- doc<br>
     研修にて使用する資料
-- ddl
+- ddl<br>
     DB作成の為のDDL
 
 ![bg right 70%](https://stickershop.line-scdn.net/stickershop/v1/product/1448302/LINEStorePC/main.png;compress=true)
