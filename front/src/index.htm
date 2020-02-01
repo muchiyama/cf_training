@@ -144,114 +144,115 @@
             </div>
         </div>
     </div>
-</div id='container'>
-    <script>
-        $(window).load(() => { $('#loading').hide(); })
-    </script>
-    <script>
-        function CreateContent(data) {
-            $('#contentsList').loadTemplate(
-                '../template/content.htm',
-                {
-                    'artist': data.artist,
-                    'album': data.title,
-                    'fileName': data.fileName,
-                },
-                { append: true });
-        }
-    </script>
-    <script>
-        $("#audio_player").jPlayer({
-            /* イベントハンドラ */
-            ready: function () {
-                /* 再生するメディアの定義 */
-                $(this).jPlayer("setMedia", {
-                    mp3: "../tmp/sample1.mp3",   /* mp3 */
-                }) /* 自動再生 */
-            },
-            /* プレロード（デフォルトは'metadata'、プレロードする場合は'auto'） */
-            preload: "metadata",
-            /* 音量（デフォルトは0.8、指定可能な値の範囲は0～1） */
-            volume: 0.5,
-            /* ミュートの有無（デフォルトはfalse）*/
-            muted: false,
-            /* 背景色*/
-            backgroundColor: "#ff6699",
-            /* エラーアラート表示の有無（デフォルトはfalse） */
-            errorAlerts: false,
-            /* 警告アラート表示の有無（デフォルトはfalse） */
-            warningAlerts: false,
-            /* 最後まで再生された時 */
-            ended: function (event) {
-                /* また再生する */
-                //$(this).jPlayer("play");
-            },
-            /* Jplayer.swfのパス */
-            swfPath: "../modules/jPlayer-master/dist/jplayer/jquery.jplayer.swf",
-            /* ソリューションの優先度（デフォルトは\"html, flash\") */
-            solution: 'html, flash',
-            /* フォーマット（デフォルトはmp3、カンマ区切りで複数指定可、優先度は左が高）*/
-            /* 指定可能なフォーマットは、mp3, m4a, m4v, oga, ogv, wav, webma, webmv */
-            /* 音声ならmp3 or m4a、動画ならm4v */
-            supplied: "mp3",
-            wmode: "window"
-        })
-        .bind($.jPlayer.event.play, function () {
-            $(this).jPlayer("pauseOthers");
-        });
-    </script>
-    <script>
-        function UpdatePlayer(c, b) {
-            $('#a_artist')[0].innerHTML = c.artist;
-            $('#a_title')[0].innerHTML = c.title;
-            $("#audio_player").jPlayer("setMedia", {
-                mp3: b,   /* mp3 */
-            })
-                .jPlayer('play'); /* 自動再生 */
-        }
-
-        function GetMusic(d) {
-            $(function () {
-                var xhr = new XMLHttpRequest();
-                //xhr.open('POST', 'https://localhost:44322/api/v1/sound');//http://localhost:8080/sound/
-                xhr.open('POST', 'http://localhost:5000/api/v1/sound/');
-                xhr.setRequestHeader('Content-Type', 'application/problem+json');
-                xhr.onerror = () => {
-                    console.log("erroe!");
-                }
-                xhr.onload = () => {
-                    let c = JSON.parse(xhr.response);
-                    UpdatePlayer(c, createBinaryFromBase64(c.content));
-                };
-                xhr.send(JSON.stringify({ fileName: d }));
-            });
-        }
-
-        function GetContents() {
-            var xhr = new XMLHttpRequest();
-            //xhr.open('GET', 'https://localhost:44322/api/v1/contents');
-            xhr.open('GET', 'http://localhost:5000/api/v1/contents/');
-            xhr.setRequestHeader('Content-Type', 'application/json');// Access-Control-Allow-Origin
-            xhr.onerror = () => {
-                console.log(xhr.response);
-            }
-            xhr.onload = function (e) {
-                let c = JSON.parse(xhr.response);
-                for(r in c){
-                    CreateContent(c[r]);
-                }
-            };
-            xhr.send();
-        }
-
-        function onClickContent(e) {
-            GetMusic(e.children[3].innerHTML);
-        }
-    </script>
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-                GetContents();
-            })
-    </script>
 </body>
+</div id='container'>
+
+<script>
+    $(window).load(() => { $('#loading').hide(); })
+</script>
+
+<script>
+    $("#audio_player").jPlayer({
+        /* イベントハンドラ */
+        ready: function () {
+            /* 再生するメディアの定義 */
+            $(this).jPlayer("setMedia", {
+                mp3: "../tmp/sample1.mp3",   /* mp3 */
+            }) /* 自動再生 */
+        },
+        /* プレロード（デフォルトは'metadata'、プレロードする場合は'auto'） */
+        preload: "metadata",
+        /* 音量（デフォルトは0.8、指定可能な値の範囲は0～1） */
+        volume: 0.5,
+        /* ミュートの有無（デフォルトはfalse）*/
+        muted: false,
+        /* 背景色*/
+        backgroundColor: "#ff6699",
+        /* エラーアラート表示の有無（デフォルトはfalse） */
+        errorAlerts: false,
+        /* 警告アラート表示の有無（デフォルトはfalse） */
+        warningAlerts: false,
+        /* 最後まで再生された時 */
+        ended: function (event) {
+            /* また再生する */
+            //$(this).jPlayer("play");
+        },
+        /* Jplayer.swfのパス */
+        swfPath: "../modules/jPlayer-master/dist/jplayer/jquery.jplayer.swf",
+        /* ソリューションの優先度（デフォルトは\"html, flash\") */
+        solution: 'html, flash',
+        /* フォーマット（デフォルトはmp3、カンマ区切りで複数指定可、優先度は左が高）*/
+        /* 指定可能なフォーマットは、mp3, m4a, m4v, oga, ogv, wav, webma, webmv */
+        /* 音声ならmp3 or m4a、動画ならm4v */
+        supplied: "mp3",
+        wmode: "window"
+    })
+    .bind($.jPlayer.event.play, () => {
+        $(this).jPlayer("pauseOthers");
+    });
+</script>
+<script>
+    function CreateContent(data) {
+        $('#contentsList').loadTemplate(
+            '../template/content.htm',
+            {
+                'artist': data.artist,
+                'album': data.title,
+                'fileName': data.fileName,
+            },
+            { append: true });
+    }
+</script>
+<script>
+    function UpdatePlayer(c, b) {
+        $('#a_artist')[0].innerHTML = c.artist;
+        $('#a_title')[0].innerHTML = c.title;
+        $("#audio_player").jPlayer("setMedia", {
+            mp3: b,   /* mp3 */
+        }).jPlayer('play'); /* 自動再生 */
+    }
+
+    function GetMusic(d) {
+        $(() => {
+            var xhr = new XMLHttpRequest();
+            //xhr.open('POST', 'https://localhost:44322/api/v1/sound');//http://localhost:8080/sound/
+            xhr.open('POST', 'http://localhost:5000/api/v1/sound/');
+            xhr.setRequestHeader('Content-Type', 'application/problem+json');
+            xhr.onerror = () => {
+                console.log("erroe!");
+            }
+            xhr.onload = () => {
+                let c = JSON.parse(xhr.response);
+                UpdatePlayer(c, createBinaryFromBase64(c.content));
+            };
+            xhr.send(JSON.stringify({ fileName: d }));
+        });
+    }
+
+    function GetContents() {
+        var xhr = new XMLHttpRequest();
+        //xhr.open('GET', 'https://localhost:44322/api/v1/contents');
+        xhr.open('GET', 'http://localhost:5000/api/v1/contents/');
+        xhr.setRequestHeader('Content-Type', 'application/json');// Access-Control-Allow-Origin
+        xhr.onerror = () => {
+            console.log(xhr.response);
+        }
+        xhr.onload = (e) => {
+            let c = JSON.parse(xhr.response);
+            for(r in c){
+                CreateContent(c[r]);
+            }
+        };
+        xhr.send();
+    }
+
+    function onClickContent(e) {
+        GetMusic(e.children[3].innerHTML);
+    }
+</script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+            GetContents();
+        })
+</script>
 </html>
