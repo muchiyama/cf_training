@@ -83,8 +83,8 @@ ddlコピペして使ってください
 ハンズオン資料
 概要 / フロント(モック編) / サーバーサイド / API疎通と4セクションです
 
+![bg right 70%](https://pbs.twimg.com/profile_images/1109130191220011009/deItWDi7_400x400.jpg)
 以上:exclamation:
 [gitリンク(privateだけど)](https://github.com/muchiyama/cf_training)
 
 
-![bg right 70%](https://pbs.twimg.com/profile_images/1109130191220011009/deItWDi7_400x400.jpg)
