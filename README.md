@@ -82,7 +82,7 @@ marp: true
     ハンズオン資料
     概要 / フロント(モック編) / サーバーサイド / API疎通と4セクションです
     <br>
-![bg right 70%](https://stickershop.line-scdn.net/stickershop/v1/product/1276313/LINEStorePC/main.png;compress=true)
+![bg right 100%](https://livedoor.blogimg.jp/nekomatic04/imgs/6/0/6024e043.png)
 
 
 ---
