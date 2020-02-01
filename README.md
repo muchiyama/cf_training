@@ -15,14 +15,14 @@ marp: true
 ### かる～く自己紹介
 
 - 名前: 内山 雅智
-    - 年次
+    - 年次:
     2年目エンジニアです
 
-    - 趣味
+    - 趣味:
     音楽好きですギターもちょろっと弾きます
     軽音部はいっとります
 
-    - 言語
+    - 言語:
     C#を勉強中
 
 ![bg right 100%](https://pbs.twimg.com/media/CKm3tfvUwAA1XBT.png)
@@ -32,13 +32,13 @@ marp: true
 # Directory構成
 ###  Rootのディレクトリ構成
 - root/
-    - front
+    - front:
     クライアントサイド
-    - webApi
+    - webApi:
     サーバーサイド
-    - doc
+    - doc:
     研修にて使用する資料
-    - ddl
+    - ddl:
     DB作成の為のDDL
 
 ![bg right 100%](https://stickershop.line-scdn.net/stickershop/v1/product/1448302/LINEStorePC/main.png;compress=true)
@@ -49,13 +49,13 @@ marp: true
 #  クライアントサイドのソースです
 ### front
 - /front
-    - /assert
+    - /assert:
 画像ファイルや音楽ファイルを置くためのディレクトリ
-    - /modules
+    - /modules:
     ライブラリのソースが入ってます
-    - /src
+    - /src:
     ソースコードが入ってます
-    - /template
+    - /template:
     htmlのテンプレートファイルが入ってます
 
 ---
@@ -63,13 +63,13 @@ marp: true
 #  サーバーサイドのソースです
 ### webApi/SoundServiceApi
 - /SoundServiceApi
-    - /Common
+    - /Common:
     共通クラスのクラスライブラリ
-    - /DataAccess
+    - /DataAccess:
     DBとのやりとりをするクラスライブラリ
-    - /SoundBatch
+    - /SoundBatch:
     サーバー上のコンテンツ情報を更新するバッチ
-    - /SoundServiceApi
+    - /SoundServiceApi:
     コンテンツ情報を返すRestApi
 
 ---
@@ -77,10 +77,10 @@ marp: true
 # その他
 ###  研修での説明資料とddl
 - /
-    - /ddl
+    - /ddl:
     ddlコピペして使ってください
 
-    - /doc
+    - /doc:
     ハンズオン資料
     概要 / フロント(モック編) / サーバーサイド / API疎通と4セクションです
 ![bg right 100%](https://www.omg-ox.org/wp-content/uploads/2018/05/20160808195558-1.png)
