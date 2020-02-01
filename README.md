@@ -82,7 +82,7 @@ marp: true
     - /doc
     ハンズオン資料
     概要 / フロント(モック編) / サーバーサイド / API疎通と4セクションです
-![bg right 70%](https://static.comic-walker.com/sp/uploadimage/characters/2252.jpg)
+<!-- ![bg right 70%](https://static.comic-walker.com/sp/uploadimage/characters/2252.jpg) -->
 
 
 ---
