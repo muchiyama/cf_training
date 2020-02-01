@@ -1,0 +1,62 @@
+
+create database SoundServiceApi;
+use SoundServiceApi;
+
+
+CREATE TABLE [dbo].[MusicInfo](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[FileName] [varchar](255) NOT NULL,
+	[Artist] [varchar](255) NULL,
+	[Title] [varchar](255) NULL,
+	[Album] [varchar](255) NULL,
+	[Year] [varchar](255) NULL,
+	[Genre] [varchar](255) NULL,
+	[CreatedDate] [datetime2](7) NULL,
+	[UpdatedDate] [datetime2](7) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[MusicPath](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[FileName] [varchar](255) NOT NULL,
+	[CreatedDate] [datetime2](7) NULL,
+	[UpdatedDate] [datetime2](7) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[Parameter](
+	[RootDir] [varchar](255) NULL
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[PlayingExtensionConfiguration](
+	[Aiff] [bit] NULL,
+	[Mp3] [bit] NULL,
+	[Wav] [bit] NULL,
+	[Aac] [bit] NULL,
+	[Flac] [bit] NULL
+) ON [PRIMARY]
+GO
+
+insert into Parameter values(
+	'音楽ファイルが保存されているパス'	
+);
+
+insert into PlayingExtensionConfiguration values(
+	0,
+	1,
+	0,
+	0,
+	0
+);
+
+
+
