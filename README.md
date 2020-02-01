@@ -14,15 +14,15 @@ marp: true
 # 自己紹介
 ### かる～く自己紹介
 
-- 名前: 内山 雅智
-    - 年次
+* 名前: 内山 雅智
+    * 年次
     2年目エンジニアです
 
-    - 趣味
+    * 趣味
     音楽好きですギターもちょろっと弾きます
     軽音部はいっとります
 
-    - 言語
+    * 言語
     C#を勉強中
 
 ![bg right 100%](https://pbs.twimg.com/media/CKm3tfvUwAA1XBT.png)
@@ -40,7 +40,7 @@ marp: true
     研修にて使用する資料
     - ddl
     DB作成の為のDDL
-    
+
 ![bg right 100%](https://stickershop.line-scdn.net/stickershop/v1/product/1448302/LINEStorePC/main.png;compress=true)
 
 
