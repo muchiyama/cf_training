@@ -3,6 +3,13 @@ marp: true
 
 ---
 
+# サバクラApp実装研修
+
+<!-- footer: createed by masatomo.uchiyama@jbs.com -->
+![bg right 100%](https://livedoor.blogimg.jp/kita_asu/imgs/f/3/f3798470.png)
+
+---
+
 # 自己紹介
 ### かる～く自己紹介
 
