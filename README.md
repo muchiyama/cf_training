@@ -40,6 +40,7 @@ marp: true
     研修にて使用する資料
     - ddl
     DB作成の為のDDL
+    
 ![bg right 100%](https://stickershop.line-scdn.net/stickershop/v1/product/1448302/LINEStorePC/main.png;compress=true)
 
 
