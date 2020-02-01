@@ -7,6 +7,7 @@
     <title>Document</title>
 
     <!-- css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="../modules//tabulator-master/dist/css/tabulator.css" rel="stylesheet"/>
@@ -63,8 +64,8 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="onClickSearchButton()">Search</button>
             </form>
         </div>
     </nav>
@@ -244,6 +245,31 @@
             }
         };
         xhr.send();
+    }
+
+    function GetContentsByArtist(data) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://localhost:5000/api/v1/contents/'.concat(data));
+        xhr.setRequestHeader('Content-Type', 'application/json');// Access-Control-Allow-Origin
+        xhr.onerror = () => {
+            console.log(xhr.response);
+        }
+        xhr.onload = (e) => {
+            let c = JSON.parse(xhr.response);
+            for (r in c) {
+                CreateContent(c[r]);
+            }
+        };
+        xhr.send();
+    }
+
+    function onClickSearchButton(e) {
+        $('#contentsList').empty();
+
+        if($('#searchInput')[0].value == "")
+            GetContents();
+        else 
+            GetContentsByArtist($('#searchInput')[0].value)
     }
 
     function onClickContent(e) {

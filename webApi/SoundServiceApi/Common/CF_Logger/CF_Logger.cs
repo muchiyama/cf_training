@@ -11,11 +11,6 @@ namespace Common.CF_Logger
         /// </summary>
         private readonly log4net.ILog logger;
 
-        /// <summary>
-        /// BUilderオブジェクト
-        /// </summary>
-        private readonly Log4netBuilder builder;
-
         internal static CF_ILogger CreateInstance => new CF_Logger();
 
         /// <summary>
@@ -23,7 +18,8 @@ namespace Common.CF_Logger
         /// </summary>
         private CF_Logger()
         {
-            logger = new Log4netBuilder().Log4netConfig(Const.l_loggerConfDir)
+            logger = new Log4netBuilder()
+                   .Log4netConfig(Const.l_loggerConfDir)
                    .LoggerName(Const.l_loggerName)
                    .Assembly(System.Reflection.Assembly.GetEntryAssembly())
                    .Build();

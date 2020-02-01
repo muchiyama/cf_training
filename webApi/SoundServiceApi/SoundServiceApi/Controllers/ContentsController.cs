@@ -45,12 +45,12 @@ namespace SoundServiceApi.Controllers
         /// <param name="_artist"></param>
         /// <returns></returns>
         [HttpGet("{artistName}")]
-        public IActionResult Get(string _artist)
+        public IActionResult Get(string artistName)
         {
             try
             {
                 logger.Info(Const.I001(Const.N002));
-                return Ok(service.GetByArtist(_artist));
+                return Ok(service.GetByArtist(artistName));
             }
             catch (Exception ex)
             {

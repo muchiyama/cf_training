@@ -28,7 +28,7 @@ namespace SoundBatch.Service
         public void Update()
         {
             // サーバー内のファイル一覧
-            var files = IOUtillity.GetAudioFiles(context.Parameter.FirstOrDefault().RootDir, 
+            var files = IOUtillity.GetAudioFiles(context.Parameter.FirstOrDefault().RootDir,
                                               context.PlayingExtensionConfiguration.FirstOrDefault().Convert()).ToDictionary(k => k.Name, v => v.LastWriteTime);
             // DBデータ一覧
             var records = context.MusicPath.ToDictionary(k => k.FileName, v => (DateTime)v.UpdatedDate);
@@ -38,10 +38,10 @@ namespace SoundBatch.Service
 
             // 不要レコード削除
             DeleteDifferent(records.Except(files).ToDictionary(k => k.Key, v => v.Value));
-            logger.Info($"削除件数: {context.SaveChanges()}県"); 
+            logger.Info($"削除件数: {context.SaveChanges() / 2}件"); 
             // 新規レコード追加
             InsertDifferent(files.Except(records).ToDictionary(k => k.Key, v => v.Value));
-            logger.Info($"削除件数: {context.SaveChanges()}県");
+            logger.Info($"登録件数: {context.SaveChanges() / 2}件");
             
             // トランザクション終了
             context.Database.CommitTransaction();

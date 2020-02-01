@@ -40,8 +40,8 @@ namespace DataAccess.Factory
             return new MusicInfo()
             {
                 FileName = kvp.Key, // ファイル名
-                Artist = _metaData.Tag.FirstAlbumArtist ?? Const.a_Artist, // アーティスト名
-                Title = _metaData.Tag.Title ?? Const.a_Title, // 曲名
+                Artist = _metaData.Tag.FirstAlbumArtist ?? _metaData.Tag.FirstArtist ?? Const.a_Artist, // アーティスト名
+                Title = _metaData.Tag.Title ?? kvp.Key.TrimEnd(@".mp3".ToCharArray()), // 曲名
                 Album = _metaData.Tag.Album ?? Const.a_Album, // アルバム名
                 Year = _metaData.Tag.Year.ToString() ?? Const.a_Year, // リリース年
                 Genre = _metaData.Tag.FirstGenre ?? Const.a_Genre, // ジャンル

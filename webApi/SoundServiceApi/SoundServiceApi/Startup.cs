@@ -30,7 +30,7 @@ namespace SoundServiceApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+                                                                                                                                                                
             services.AddCors(opt =>
             {
                 opt.AddPolicy(Program.configuration.GetSection(Const.s_CorsPolicyNames).GetSection(Const.s_allowCorsDomein).Value, // Cors”]Ž€‚Å‹–‰Â
