@@ -33,27 +33,34 @@ namespace SoundServiceApi.Controllers
         [HttpGet("{_fileName}")]
         public IActionResult Get(string _fileName)
         {
-            try
-            {
-                logger.Info(Const.I001(Const.N003));
-                if (String.IsNullOrEmpty(_fileName))
-                    return this.BadRequest(Const.E002);
-                if (!service.Exist(_fileName))
-                    return this.NoContent();
+            return this.BadRequest(Const.E003);
+            //try
+            //{
+            //    logger.Info(Const.I001(Const.N003));
+            //    if (String.IsNullOrEmpty(_fileName))
+            //        return this.BadRequest(Const.E002);
+            //    if (!service.Exist(_fileName))
+            //        return this.NoContent();
 
-                logger.Info(Const.I002(Const.N003));
-                return Ok(service.GetByFileName(_fileName).content);
-            }
-            catch(Exception ex)
-            {
-                logger.Error(Const.F001, ex);
-                return this.BadRequest(Const.E003);
-            }
+            //    logger.Info(Const.I002(Const.N003));
+            //    return Ok(service.GetByFileName(_fileName).content);
+            //}
+            //catch(Exception ex)
+            //{
+            //    logger.Error(Const.F001, ex);
+            //    return this.BadRequest(Const.E003);
+            //}
         }
 
+        /// <summary>
+        /// audioファイルを返す
+        /// Jsonの構成 -> { artist: 'アーティスト', title: 'タイトル', content: 'audioファイルのbase64エンコード' }
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         // POST: api/Sound
         [HttpPost]
-        public IActionResult Post([FromBody] MusicViewModel value)
+        public IActionResult Post([FromBody] AudioViewModel value)
         {
             try
             {

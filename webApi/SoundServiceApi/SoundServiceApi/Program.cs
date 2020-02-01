@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -11,13 +12,14 @@ namespace SoundServiceApi
 {
     public class Program
     {
+        /// <summary>
+        /// appsetting.jsonのエセDI
+        /// </summary>
         public static IConfigurationRoot configuration;
+
         public static void Main(string[] args)
         {
-            // Dev用
             configuration = new ConfigurationBuilder().SetBasePath(Environment.CurrentDirectory).AddJsonFile(@"appsettings.json", false).Build();
-            // デプロイ用
-            //configuration = new ConfigurationBuilder().SetBasePath($@"{Environment.CurrentDirectory}\netcoreapp3.1").AddJsonFile(@"appsettings.json", false).Build();
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -25,7 +27,7 @@ namespace SoundServiceApi
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseUrls(configuration.GetSection("LaunchUrls").Value)
+                    webBuilder.UseUrls(configuration.GetSection(Const.s_LaunchUrls).Value) // ローンチの際のURL指定 -> appsetting.jsonより取得
                               .UseStartup<Startup>();
                 });
     }

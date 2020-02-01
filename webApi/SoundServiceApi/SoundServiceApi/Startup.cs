@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using Microsoft.EntityFrameworkCore.Design;
+using Common;
 //using SoundServiceApi.Models;
 
 namespace SoundServiceApi
@@ -29,13 +30,12 @@ namespace SoundServiceApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddCors(opt =>
             {
-                opt.AddPolicy("allowCorsDomein",
+                opt.AddPolicy(Program.configuration.GetSection(Const.s_CorsPolicyNames).GetSection(Const.s_allowCorsDomein).Value, // Cors”]Ž€‚Å‹–‰Â
                               b =>
                               {
-                                  //b.WithOrigins("*")
-                                  //.WithHeaders("*")
                                   b.AllowAnyOrigin()
                                   .AllowAnyHeader()
                                   .AllowAnyMethod();
@@ -57,19 +57,12 @@ namespace SoundServiceApi
 
             app.UseAuthorization();
 
-            app.UseCors("allowCorsDomein");
+            app.UseCors(Program.configuration.GetSection(Const.s_CorsPolicyNames).GetSection(Const.s_allowCorsDomein).Value); //CprsŽg—p
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                          //.RequireCors("allowCorsDomein");
             });
-
-            //app.UseCors(builder => builder
-            //    .AllowAnyOrigin()
-            //    .AllowAnyMethod()
-            //    .AllowAnyHeader()
-            //    );
         }
     }
 }

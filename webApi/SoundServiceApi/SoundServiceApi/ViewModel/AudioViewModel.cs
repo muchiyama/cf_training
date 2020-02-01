@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SoundServiceApi.ViewModel
 {
-    public class MusicViewModel
+    /// <summary>
+    /// audioファイルのモデル
+    /// </summary>
+    public class AudioViewModel
     {
         public string artist { get; set; }
         public string title { get; set; }

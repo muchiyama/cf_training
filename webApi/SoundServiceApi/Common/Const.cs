@@ -7,20 +7,42 @@ namespace Common
     public static class Const
     {
         #region コネクション
+        /// <summary>
+        /// 接続文字列
+        /// </summary>
         public static string Con => @"Server=W1003848N182\SQLEXPRESS;Database=SoundServiceApi;persist security info=True;user id=sa;password=1234567;MultipleActiveResultSets=True";
         #endregion
 
+
+        #region appsetting.jsonのセクション名
+        /// <summary>
+        /// appsetting.jsonのセクション名 -> LaunchUrls
+        /// </summary>
+        public static string s_LaunchUrls => "LaunchUrls";
+        public static string s_allowCorsDomein => "allowCorsDomein";
+        public static string s_CorsPolicyNames => "CorsPolicyNames";
+
+        #endregion
+
         #region モデル設定パラメーター
-        public static string Anonymous => "不明な";
+        private static string Anonymous => "不明な";
         public static string a_Artist => $"{Anonymous}アーティスト";
         public static string a_Title => $"{Anonymous}タイトル";
         public static string a_Album => $"{Anonymous}アルバム";
         public static string a_Genre => $"{Anonymous}ジャンル";
         public static string a_Year => $"{Anonymous}リリース年";
         public static string year_fmt => "yyyy年";
+        #endregion
 
-        public static string loggerConfDir => "./log4net.config";
-        public static string loggerName => "debug";
+        #region logger
+        /// <summary>
+        /// Configファイルのディレクトリ
+        /// </summary>
+        public static string l_loggerConfDir => "./log4net.config";
+        /// <summary>
+        /// ロガー名
+        /// </summary>
+        public static string l_loggerName => "debug";
         #endregion
 
         #region message
@@ -76,7 +98,9 @@ namespace Common
         /// </summary>
         public static string F001 => $"致命的なエラーが発生しました";
         #endregion
-
+        #region Param
+        internal static bool IsDev => true;
+        #endregion
 
         #endregion
 

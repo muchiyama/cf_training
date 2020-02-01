@@ -16,13 +16,15 @@ namespace Common.CF_Logger
         /// </summary>
         private readonly Log4netBuilder builder;
 
+        internal static CF_ILogger CreateInstance => new CF_Logger();
+
         /// <summary>
-        /// logger object wrapped in log4net
+        /// ラッピング
         /// </summary>
-        public CF_Logger()
+        private CF_Logger()
         {
-            logger = new Log4netBuilder().Log4netConfig(Const.loggerConfDir)
-                   .LoggerName(Const.loggerName)
+            logger = new Log4netBuilder().Log4netConfig(Const.l_loggerConfDir)
+                   .LoggerName(Const.l_loggerName)
                    .Assembly(System.Reflection.Assembly.GetEntryAssembly())
                    .Build();
         }
