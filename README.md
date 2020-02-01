@@ -23,7 +23,6 @@ marp: true
 
 - 言語: C#
 勉強中
-まだちゃんと書けません
 
 ![bg right 100%](https://pbs.twimg.com/media/CKm3tfvUwAA1XBT.png)
 
