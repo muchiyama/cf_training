@@ -3,7 +3,6 @@ marp: true
 
 ---
 <!-- page_number: true -->
-<!-- footer: createed by masatomo.uchiyama@jbs.com -->
 
 # サバクラApp実装研修
 
@@ -82,6 +81,7 @@ marp: true
     - /doc
     ハンズオン資料
     概要 / フロント(モック編) / サーバーサイド / API疎通と4セクションです
+    <br>
 ![bg right 70%](https://stickershop.line-scdn.net/stickershop/v1/product/1276313/LINEStorePC/main.png;compress=true)
 
 
