@@ -5,7 +5,7 @@ marp: true
 <!-- page_number: true -->
 
 # サバクラApp実装研修
-
+### かる～く説明
 
 ![bg right 100%](https://www.omg-ox.org/wp-content/uploads/2018/05/20160808195558-1.png)
 
@@ -14,15 +14,15 @@ marp: true
 # 自己紹介
 ### かる～く自己紹介
 
-- 名前: うちやま<br>
-2年目エンジニアです
+- 名前: うちやま
+    2年目エンジニアです
 
-- 趣味: 音楽<br>
-ギターもちょろっと弾きます<br>
+- 趣味: 音楽
+ギターもちょろっと弾きます
 軽音部はいっとります
 
-- 言語: C#<br>
-勉強中<br>
+- 言語: C#
+勉強中
 まだちゃんと書けません
 
 ![bg right 100%](https://pbs.twimg.com/media/CKm3tfvUwAA1XBT.png)
@@ -31,13 +31,13 @@ marp: true
 
 # Directory構成
 ###  Rootのディレクトリ構成
-- front<br>
+- front
     クライアントサイド
-- webApi<br>
+- webApi
     サーバーサイド
-- doc<br>
+- doc
     研修にて使用する資料
-- ddl<br>
+- ddl
     DB作成の為のDDL
 
 ![bg right 70%](https://stickershop.line-scdn.net/stickershop/v1/product/1448302/LINEStorePC/main.png;compress=true)
@@ -81,7 +81,6 @@ marp: true
     - /doc
     ハンズオン資料
     概要 / フロント(モック編) / サーバーサイド / API疎通と4セクションです
-    <br>
 ![bg right 100%](https://livedoor.blogimg.jp/nekomatic04/imgs/6/0/6024e043.png)
 
 
