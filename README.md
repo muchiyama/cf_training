@@ -82,6 +82,8 @@ marp: true
     - /doc
     ハンズオン資料
     概要 / フロント(モック編) / サーバーサイド / API疎通と4セクションです
+![bg right 70%](https://stickershop.line-scdn.net/stickershop/v1/product/1276313/LINEStorePC/main.png;compress=true)
+
 
 ---
 # おーしまい
