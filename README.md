@@ -2,10 +2,12 @@
 marp: true
 
 ---
+<!-- page_number: true -->
+<!-- footer: createed by masatomo.uchiyama@jbs.com -->
 
 # サバクラApp実装研修
 
-<!-- footer: createed by masatomo.uchiyama@jbs.com -->
+
 ![bg right 100%](https://livedoor.blogimg.jp/kita_asu/imgs/f/3/f3798470.png)
 
 ---
@@ -31,9 +33,9 @@ marp: true
 # Directory構成
 ###  Rootのディレクトリ構成
 * front
-    クライアントサイドのソースコード
+    クライアントサイド
 * webApi
-    サーバーサイドのソースコード
+    サーバーサイド
 * doc
     研修にて使用する資料
 * ddl
@@ -46,14 +48,12 @@ marp: true
 * /front
     * /assert
 画像ファイルや音楽ファイルを置くためのディレクトリ
-    * /conf
-    使用ライブラリに読ませるための定義ファイルが入ってます
     * /modules
-    使用ライブラリのソースが入ってます
+    ライブラリのソースが入ってます
     * /src
     ソースコードが入ってます
     * /template
-    ライブラリが使用するhtmlのテンプレートファイルが入ってます
+    htmlのテンプレートファイルが入ってます
 ---
 
 #  サーバーサイドのソースです
@@ -67,10 +67,6 @@ marp: true
     サーバー上のコンテンツ情報を更新するバッチ
     * /SoundServiceApi
     コンテンツ情報を返すRestApi
-
-<!-- ![bg right 70%](https://blog-imgs-55.fc2.com/m/i/y/miyamoseminar5/By-H5wGCcAAy7-q.png) -->
-
-
 ---
 
 # その他
