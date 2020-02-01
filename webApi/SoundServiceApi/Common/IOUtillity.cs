@@ -26,8 +26,10 @@ namespace Common
         /// <returns></returns>
         public static IEnumerable<FileInfo> GetAudioFiles(string _path, IDictionary<string, bool> _conf)
         {
+            var res = new List<FileInfo>();
             foreach (var e in _conf.Where(w => w.Value)) 
-                yield return IOUtillity.GetDerectory(_path).GetFiles(@$"*.{e.Key}").FirstOrDefault();
+                res.AddRange(IOUtillity.GetDerectory(_path).GetFiles(@$"*.{e.Key}").ToList());
+            return res;
         }
 
         /// <summary>

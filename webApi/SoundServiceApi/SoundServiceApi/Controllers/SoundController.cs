@@ -34,22 +34,6 @@ namespace SoundServiceApi.Controllers
         public IActionResult Get(string _fileName)
         {
             return this.BadRequest(Const.E003);
-            //try
-            //{
-            //    logger.Info(Const.I001(Const.N003));
-            //    if (String.IsNullOrEmpty(_fileName))
-            //        return this.BadRequest(Const.E002);
-            //    if (!service.Exist(_fileName))
-            //        return this.NoContent();
-
-            //    logger.Info(Const.I002(Const.N003));
-            //    return Ok(service.GetByFileName(_fileName).content);
-            //}
-            //catch(Exception ex)
-            //{
-            //    logger.Error(Const.F001, ex);
-            //    return this.BadRequest(Const.E003);
-            //}
         }
 
         /// <summary>
