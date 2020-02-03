@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoundServiceApi.ViewModel
+namespace Sample_SoundServiceApi.ViewModel
 {
-    /// <summary>
-    /// audioファイルのモデル
-    /// </summary>
     public class AudioViewModel
     {
         /// <summary>
-        /// アーティスト
+        /// アーティスト名
         /// </summary>
         public string artist { get; set; }
         /// <summary>
-        /// タイトル
+        /// 曲名
         /// </summary>
         public string title { get; set; }
         /// <summary>

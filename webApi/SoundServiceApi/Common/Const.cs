@@ -96,7 +96,7 @@ namespace Common
         /// <summary>
         /// 致命的なエラーが発生しました
         /// </summary>
-        public static string F001 => $"致命的なエラーが発生しました";
+        public static string F001 => $"マジで致命的なエラーが発生しました";
         #endregion
         #region Param
         internal static bool IsDev => true;

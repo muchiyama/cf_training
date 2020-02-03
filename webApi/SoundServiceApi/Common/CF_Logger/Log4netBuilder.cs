@@ -10,9 +10,9 @@ namespace Common.CF_Logger
 {
     internal class Log4netBuilder
     {
-        private string _log4netConfig;
-        private string _loggerName;
-        private Assembly _assembly;
+        private string log4netConfig;
+        private string loggerName;
+        private Assembly assembly;
         public Log4netBuilder() {  }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Common.CF_Logger
         /// <returns></returns>
         public Log4netBuilder Log4netConfig(string _path)
         {
-            _log4netConfig = _path;
+            log4netConfig = _path;
             return this;
         }
 
@@ -33,7 +33,7 @@ namespace Common.CF_Logger
         /// <returns></returns>
         public Log4netBuilder Assembly(Assembly _assembly)
         {
-            this._assembly = _assembly;
+            this.assembly = _assembly;
             return this;
         }
 
@@ -44,7 +44,7 @@ namespace Common.CF_Logger
         /// <returns></returns>
         public Log4netBuilder LoggerName(string _loggerName)
         {
-            this._loggerName = _loggerName;
+            this.loggerName = _loggerName;
             return this;
         }
 
@@ -55,14 +55,14 @@ namespace Common.CF_Logger
         public log4net.ILog Build()
         {
             log4net.Config.XmlConfigurator.Configure(GetRepos(), GetConfig());
-            return log4net.LogManager.GetLogger(System.Reflection.Assembly.GetEntryAssembly(), _loggerName);
+            return log4net.LogManager.GetLogger(System.Reflection.Assembly.GetEntryAssembly(), loggerName);
         }
 
         /// <summary>
         /// TODO: 何やってるか忘れた
         /// </summary>
         /// <returns></returns>
-        private ILoggerRepository GetRepos() => log4net.LogManager.GetRepository(_assembly);
+        private ILoggerRepository GetRepos() => log4net.LogManager.GetRepository(assembly);
 
         /// <summary>
         /// Confファイル取得
@@ -79,7 +79,7 @@ namespace Common.CF_Logger
         /// コンフィグファイルを開く
         /// </summary>
         /// <returns></returns>
-        private Stream GetXmlStream() => (Stream)File.OpenRead(_log4netConfig);
+        private Stream GetXmlStream() => (Stream)File.OpenRead(log4netConfig);
 
     }
 }

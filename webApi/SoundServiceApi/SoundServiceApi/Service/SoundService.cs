@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DataAccess.Models;
 using Common;
 using SoundServiceApi.ViewModel;
+using Common.Attribute;
 
 namespace SoundServiceApi.Service
 {

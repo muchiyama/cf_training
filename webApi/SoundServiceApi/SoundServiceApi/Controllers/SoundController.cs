@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Common;
+using Common.Attribute;
 using Common.CF_Logger;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -19,6 +20,7 @@ namespace SoundServiceApi.Controllers
     [ApiController]
     public class SoundController : ControllerBase
     {
+        [DependencyInjection(typeof(SoundService))]
         private readonly SoundService service = new SoundService();
         private readonly CF_ILogger logger = CF_LoggerFactory.GetCFLogger();
 
@@ -30,10 +32,24 @@ namespace SoundServiceApi.Controllers
         }
 
         // GET: api/Sound/5
-        [HttpGet("{_fileName}")]
-        public IActionResult Get(string _fileName)
+        [HttpGet("{fileName}")]
+        public IActionResult Get(string fileName)
         {
-            return this.BadRequest(Const.E003);
+            try
+            {
+                logger.Info(Const.I001(Const.N003));
+                if (String.IsNullOrEmpty(fileName))
+                    return this.BadRequest(Const.E002);
+                if (!service.Exist(fileName))
+                    return this.NoContent();
+                logger.Info(Const.I002(Const.N003));
+                return Ok(service.GetByFileName(fileName));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(Const.E001, ex);
+                return this.NoContent();
+            }
         }
 
         /// <summary>

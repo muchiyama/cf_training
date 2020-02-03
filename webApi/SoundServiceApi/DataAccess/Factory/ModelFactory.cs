@@ -32,21 +32,21 @@ namespace DataAccess.Factory
         /// 使用ライブラリ -> Taglib
         /// なんか音楽ファイルのメタデータ取得してくれる
         /// </summary>
-        /// <param name="kvp"></param>
+        /// <param name="_kvp"></param>
         /// <param name="_metaData"></param>
         /// <returns></returns>
-        public MusicInfo CreateMusicInfo(KeyValuePair<string, DateTime> kvp, TagLib.File _metaData)
+        public MusicInfo CreateMusicInfo(KeyValuePair<string, DateTime> _kvp, TagLib.File _metaData)
         {
             return new MusicInfo()
             {
-                FileName = kvp.Key, // ファイル名
+                FileName = _kvp.Key, // ファイル名
                 Artist = _metaData.Tag.FirstAlbumArtist ?? _metaData.Tag.FirstArtist ?? Const.a_Artist, // アーティスト名
-                Title = _metaData.Tag.Title ?? kvp.Key.TrimEnd(@".mp3".ToCharArray()), // 曲名
+                Title = _metaData.Tag.Title ?? _kvp.Key.TrimEnd(@".mp3".ToCharArray()), // 曲名
                 Album = _metaData.Tag.Album ?? Const.a_Album, // アルバム名
                 Year = _metaData.Tag.Year.ToString() ?? Const.a_Year, // リリース年
                 Genre = _metaData.Tag.FirstGenre ?? Const.a_Genre, // ジャンル
-                CreatedDate = kvp.Value, // 作成日時
-                UpdatedDate = kvp.Value // 更新日時(差分は削除するから実質使わん)
+                CreatedDate = _kvp.Value, // 作成日時
+                UpdatedDate = _kvp.Value // 更新日時(差分は削除するから実質使わん)
             };
         }
 
@@ -62,15 +62,15 @@ namespace DataAccess.Factory
         /// <summary>
         /// バッチ用
         /// </summary>
-        /// <param name="kvp"></param>
+        /// <param name="_kvp"></param>
         /// <returns></returns>
-        public MusicPath CreateMusicPath(KeyValuePair<string, DateTime> kvp)
+        public MusicPath CreateMusicPath(KeyValuePair<string, DateTime> _kvp)
         {
             return new MusicPath 
             {
-                FileName = kvp.Key, // ファイル名
-                CreatedDate = kvp.Value, // 作成日時
-                UpdatedDate = kvp.Value // 更新日時
+                FileName = _kvp.Key, // ファイル名
+                CreatedDate = _kvp.Value, // 作成日時
+                UpdatedDate = _kvp.Value // 更新日時
             };
         }
     }

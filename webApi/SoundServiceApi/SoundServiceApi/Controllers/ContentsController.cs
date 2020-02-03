@@ -9,6 +9,7 @@ using DataAccess.Models;
 using SoundServiceApi.ViewModel;
 using Common.CF_Logger;
 using Common;
+using Common.Attribute;
 
 namespace SoundServiceApi.Controllers
 {
@@ -16,6 +17,7 @@ namespace SoundServiceApi.Controllers
     [ApiController]
     public class ContentsController : ControllerBase
     {
+        [DependencyInjection(typeof(MusicInfoService))]
         private readonly MusicInfoService service = new MusicInfoService();
         private readonly CF_ILogger logger = CF_LoggerFactory.GetCFLogger();
         // GET: api/ContentsList

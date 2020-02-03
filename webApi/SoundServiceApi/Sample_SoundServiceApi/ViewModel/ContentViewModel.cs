@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
-namespace SoundServiceApi.ViewModel
+namespace Sample_SoundServiceApi.ViewModel
 {
-    /// <summary>
-    /// audioファイルのモデル
-    /// </summary>
-    public class AudioViewModel
+    public class ContentViewModel
     {
         /// <summary>
         /// アーティスト
@@ -20,12 +17,12 @@ namespace SoundServiceApi.ViewModel
         /// </summary>
         public string title { get; set; }
         /// <summary>
+        /// ジャンル
+        /// </summary>
+        public string genre { get; set; }
+        /// <summary>
         /// ファイル名
         /// </summary>
         public string fileName { get; set; }
-        /// <summary>
-        /// Audioファイル
-        /// </summary>
-        public byte[] content { get; set; }
     }
 }

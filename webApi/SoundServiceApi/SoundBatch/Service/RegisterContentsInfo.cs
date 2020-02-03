@@ -50,68 +50,68 @@ namespace SoundBatch.Service
         /// <summary>
         /// 新規データ登録
         /// </summary>
-        /// <param name="target"></param>
-        private void InsertDifferent(IDictionary<string, DateTime> target)
+        /// <param name="_target"></param>
+        private void InsertDifferent(IDictionary<string, DateTime> _target)
         {
-            if (!target.Any())
+            if (!_target.Any())
                 return;
 
-            InsertPath(target);
-            InsertInfo(target);
+            InsertPath(_target);
+            InsertInfo(_target);
         }
 
         /// <summary>
         /// Pathの設定をDBに登録
         /// </summary>
-        /// <param name="target"></param>
-        private void InsertPath(IDictionary<string, DateTime> target)
+        /// <param name="_target"></param>
+        private void InsertPath(IDictionary<string, DateTime> _target)
         {
             var factory = ModelFactory.GetInstance();
-            foreach (var kvp in target)
+            foreach (var kvp in _target)
                 context.MusicPath.Add(factory.CreateMusicPath(kvp));
         }
 
         /// <summary>
         /// 音楽情報を登録
         /// </summary>
-        /// <param name="target"></param>
-        private void InsertInfo(IDictionary<string, DateTime> target)
+        /// <param name="_target"></param>
+        private void InsertInfo(IDictionary<string, DateTime> _target)
         {
             var factory = ModelFactory.GetInstance();
-            foreach (var kvp in target) 
+            foreach (var kvp in _target) 
                 context.MusicInfo.Add(factory.CreateMusicInfo(kvp, TagLib.File.Create($@"{this.context.Parameter.FirstOrDefault().RootDir}\{kvp.Key}")));
         }
 
         /// <summary>
         /// 不要データを削除
         /// </summary>
-        /// <param name="target"></param>
-        private void DeleteDifferent(IDictionary<string, DateTime> target)
+        /// <param name="_target"></param>
+        private void DeleteDifferent(IDictionary<string, DateTime> _target)
         {
-            if (!target.Any())
+            if (!_target.Any())
                 return;
 
-            DeletePath(target);
-            DeleteInfo(target);
+            DeletePath(_target);
+            DeleteInfo(_target);
         }
 
         /// <summary>
         /// Pathの設定をDBにから削除
         /// </summary>
-        /// <param name="target"></param>
-        private void DeletePath(IDictionary<string, DateTime> target)
+        /// <param name="_target"></param>
+        private void DeletePath(IDictionary<string, DateTime> _target)
         {
-            foreach(var kvp in target)
+            foreach(var kvp in _target)
                 context.MusicPath.Remove(context.MusicPath.Where(w => w.FileName.Equals(kvp.Key)).FirstOrDefault());
         }
 
         /// <summary>
         /// 音楽情報の設定をDBから削除
         /// </summary>
-        /// <param name="target"></param>
-        private void DeleteInfo(IDictionary<string, DateTime> target)
+        /// <param name="_target"></param>
+        private void DeleteInfo(IDictionary<string, DateTime> _target)
         {
-            foreach (var kvp in target)
+            foreach (var kvp in _target)
                 context.MusicInfo.Remove(context.MusicInfo.Where(w => w.FileName.Equals(kvp.Key)).FirstOrDefault());
         }
     }
