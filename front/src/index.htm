@@ -145,7 +145,6 @@
             </div>
         </div>
     </div>
-</body>
 </div id='container'>
 
 <script>
@@ -218,6 +217,7 @@
             var xhr = new XMLHttpRequest();
             //xhr.open('POST', 'https://localhost:44322/api/v1/sound');//http://localhost:8080/sound/
             xhr.open('POST', 'http://localhost:5000/api/v1/sound/');
+            //xhr.open('GET', 'http://localhost:5000/api/v1/sound/'.concat(d));
             xhr.setRequestHeader('Content-Type', 'application/problem+json');
             xhr.onerror = () => {
                 console.log("erroe!");
