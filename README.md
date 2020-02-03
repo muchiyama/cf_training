@@ -5,8 +5,8 @@ marp: true
 <!-- page_number: true -->
 
 # サバクラApp実装研修
-### かる～く説明
-
+### サウンドプレーヤーアプリです
+![bg right 100%](https://github.com/muchiyama/cf_training/blob/master/other/すっくしょ.png)
 
 
 ---
