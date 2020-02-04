@@ -96,9 +96,99 @@
         <div class="row">
             <!-- サウンドプレーヤー -->
             <!-- ここにサウンドプレーヤーを差し込みます -->
+            <div class="col-12 audio_wrapper">
+                <div id="audio_player" class="jp-jplayer"></div>
+                <div id="jp_container_1" class="jp-audio" style="width: auto;">
+                    <div class="jp-type-single">
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <div class="jp-gui jp-interface">
+                                    <ul class="jp-controls">
+                                        <li><a href="#" class="jp-play" tabindex="1">play</a></li>
+                                        <li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
+                                        <li><a href="#" class="jp-stop" tabindex="1">stop</a></li>
+                                        <li><a href="#" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+                                        <li><a href="#" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+                                        <li><a href="#" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+                                    </ul>
+                                    <div class="jp-progress">
+                                        <div class="jp-seek-bar">
+                                            <div class="jp-play-bar"></div>
+                                        </div>
+                                    </div>
+                                    <div class="jp-volume-bar">
+                                        <div class="jp-volume-bar-value"></div>
+                                    </div>
+                                    <div class="jp-time-holder">
+                                        <div class="jp-current-time"></div>
+                                        <div class="jp-duration"></div>
+                                        <ul class="jp-toggles">
+                                            <li><a href="#" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+                                            <li><a href="#" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+                        <div class="jp-title">
+                            <ul>
+                                <li><a id="a_artist">-</a> / <a id="a_title">-</a></li>
+                            </ul>
+                        </div>
+                        <div class="jp-no-solution">
+                            <span>Update Required</span>
+                            To play the media you will need to either update your browser to a recent version or update your <a
+                                href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div id='container'>
 </body>
+<script>
+    $("#audio_player").jPlayer({
+        /* イベントハンドラ */
+        ready: function () {
+            /* 再生するメディアの定義 */
+            $(this).jPlayer("setMedia", {
+                mp3: "../tmp/sample1.mp3",   /* mp3 */
+            }) /* 自動再生 */
+        },
+        /* プレロード（デフォルトは'metadata'、プレロードする場合は'auto'） */
+        preload: "metadata",
+        /* 音量（デフォルトは0.8、指定可能な値の範囲は0～1） */
+        volume: 0.5,
+        /* ミュートの有無（デフォルトはfalse）*/
+        muted: false,
+        /* 背景色*/
+        backgroundColor: "#ff6699",
+        /* エラーアラート表示の有無（デフォルトはfalse） */
+        errorAlerts: false,
+        /* 警告アラート表示の有無（デフォルトはfalse） */
+        warningAlerts: false,
+        /* 最後まで再生された時 */
+        ended: function (event) {
+            /* また再生する */
+            //$(this).jPlayer("play");
+        },
+        /* Jplayer.swfのパス */
+        swfPath: "../modules/jPlayer-master/dist/jplayer/jquery.jplayer.swf",
+        /* ソリューションの優先度（デフォルトは\"html, flash\") */
+        solution: 'html, flash',
+        /* フォーマット（デフォルトはmp3、カンマ区切りで複数指定可、優先度は左が高）*/
+        /* 指定可能なフォーマットは、mp3, m4a, m4v, oga, ogv, wav, webma, webmv */
+        /* 音声ならmp3 or m4a、動画ならm4v */
+        supplied: "mp3",
+        wmode: "window"
+    })
+        .bind($.jPlayer.event.play, () => {
+            $(this).jPlayer("pauseOthers");
+        });
+</script>
 <script>
     function CreateContent(data) {
             $('#contentsList').loadTemplate(
@@ -134,7 +224,12 @@
         }
         xhr.onload = (e) => {
             let contents = JSON.parse(xhr.response);
-            console.log(contents);
+            let res = createBinaryFromBase64(contents.content);
+            
+            $("#audio_player").jPlayer("setMedia", {
+                mp3: res,   /* mp3 */
+            }).jPlayer('play'); /* 自動再生 */
+
         };
         xhr.send();
     }
