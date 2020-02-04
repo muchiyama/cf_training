@@ -26,6 +26,18 @@ namespace Sample_SoundServiceApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("policyName", // Cors”]Ž€‚Å‹–‰Â
+                              b =>
+                              {
+                                  b.AllowAnyOrigin()
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod();
+                              });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,16 +48,15 @@ namespace Sample_SoundServiceApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseHttpsRedirection()
+               .UseAuthorization()
+               .UseRouting()
+               .UseCors("policyName")
+               .UseEndpoints(endpoints =>
+               {
+                   endpoints.MapControllers();
+               });
         }
     }
 }
+

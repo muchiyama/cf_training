@@ -51,18 +51,14 @@ namespace SoundServiceApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseCors(Program.configuration.GetSection(Const.s_CorsPolicyNames).GetSection(Const.s_allowCorsDomein).Value); //Cprs使用
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseHttpsRedirection()
+                .UseAuthorization()
+                .UseRouting()
+                .UseCors(Program.configuration.GetSection(Const.s_CorsPolicyNames).GetSection(Const.s_allowCorsDomein).Value) //Cprs使用
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
         }
     }
 }

@@ -99,4 +99,58 @@
         </div>
     </div id='container'>
 </body>
+<script>
+    function CreateContent(data) {
+            $('#contentsList').loadTemplate(
+                '../template/content.htm',
+                {
+                    'artist': data.artist,
+                    'album': data.title,
+                    'fileName': data.fileName,
+                },
+                { append: true });
+        }
+    function GetContents() {
+            var xhr = new XMLHttpRequest();
+            //xhr.open('GET', 'https://localhost:44322/api/v1/contents');
+            xhr.open('GET', 'https://localhost:44328/api/sample/');
+            xhr.onerror = () => {
+                console.log(xhr.response);
+            }
+            xhr.onload = (e) => {
+                let contents = JSON.parse(xhr.response);
+                for(c in contents) {
+                    CreateContent(contents[c]);
+                }
+            };
+            xhr.send();
+        }
+
+    function GetAudio(data) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://localhost:44328/api/sample2/'.concat(data));
+        xhr.onerror = () => {
+            console.log(xhr.response);
+        }
+        xhr.onload = (e) => {
+            let contents = JSON.parse(xhr.response);
+            console.log(contents);
+        };
+        xhr.send();
+    }
+    function onClickContent(e) {
+        GetAudio(e.children[3].innerHTML);
+    }
+
+    function AjaxSample() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://localhost:44328/api/sample/',
+            success: (res) => {
+                console.log(res);
+            }
+        });
+    }
+    GetContents();
+</script>
 </html>
