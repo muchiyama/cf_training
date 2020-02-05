@@ -191,15 +191,26 @@
 </script>
 <script>
     function CreateContent(data) {
-            $('#contentsList').loadTemplate(
-                '../template/content.htm',
-                {
-                    'artist': data.artist,
-                    'album': data.title,
-                    'fileName': data.fileName,
-                },
-                { append: true });
+        $('#contentsList').loadTemplate(
+            '../template/content.htm', // 第一引数: テンプレートファイルのパス
+            {
+                'artist': data.artist, // 第二引数: { テンプレートのdata-contents名: 実際に差し込むデータ }
+                'album': data.title,
+                'fileName': data.fileName,
+            },
+            { append: true }); // 第三引数: テンプレートを追記していくかの設定
         }
+
+    function CreateMock() {
+        let json = [
+            { artist: 'YUI', title: 'Life', genre: 'J-ROCK', fileName: 'Life.mp3' },
+            { artist: 'ARASHI', title: 'Truth', genre: 'J-POP', fileName: 'Truth.mp3' },
+        ]
+
+        for(i in json) {
+            CreateContent(json[i]);
+        }
+    }
     function GetContents() {
             var xhr = new XMLHttpRequest();
             //xhr.open('GET', 'https://localhost:44322/api/v1/contents');
