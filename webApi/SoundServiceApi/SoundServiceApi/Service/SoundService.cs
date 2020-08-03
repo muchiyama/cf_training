@@ -13,9 +13,14 @@ namespace SoundServiceApi.Service
     /// <summary>
     /// audioファイルを返す
     /// </summary>
-    public class SoundService
+    public class SoundService : IMyService
     {
-        private readonly SoundServiceApiContext context = new SoundServiceApiContext();
+        private readonly SoundServiceApiContext _context;
+
+        public SoundService(SoundServiceApiContext context)
+        {
+            _context = context;
+        }
 
         /// <summary>
         /// ファイル名より検索
@@ -24,8 +29,8 @@ namespace SoundServiceApi.Service
         /// <returns></returns>
         public AudioViewModel GetByFileName(string _fileName)
         {
-            return ViewModelFactory.GetMusicVMInstance(IOUtillity.GetBytesByFileName(context.Parameter.FirstOrDefault().RootDir, _fileName),
-                                                       context.MusicInfo.Where(w => w.FileName.Equals(_fileName)).FirstOrDefault());
+            return ViewModelFactory.GetMusicVMInstance(IOUtillity.GetBytesByFileName(_context.Parameter.FirstOrDefault().RootDir, _fileName),
+                                                       _context.MusicInfo.Where(w => w.FileName.Equals(_fileName)).FirstOrDefault());
         }
 
         /// <summary>
@@ -36,7 +41,7 @@ namespace SoundServiceApi.Service
         /// <returns></returns>
         public bool Exist(string _fileName)
         {
-            return IOUtillity.GetAudioByFileName(context.Parameter.FirstOrDefault().RootDir, _fileName).Any() && context.MusicInfo.Where(w => w.FileName.Equals(_fileName)).Any();
+            return IOUtillity.GetAudioByFileName(_context.Parameter.FirstOrDefault().RootDir, _fileName).Any() && _context.MusicInfo.Where(w => w.FileName.Equals(_fileName)).Any();
         }
     }
 }

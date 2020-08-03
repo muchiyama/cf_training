@@ -10,17 +10,22 @@ namespace SoundServiceApi.Service
     /// <summary>
     /// コンテンツ情報を返す
     /// </summary>
-    public class MusicInfoService
+    public class MusicInfoService : IMyService
     {
-        private readonly SoundServiceApiContext context = new SoundServiceApiContext();
-        
+        private readonly SoundServiceApiContext _context;
+
+        public MusicInfoService(SoundServiceApiContext context)
+        {
+            _context = context;
+        }
+
         /// <summary>
         /// コンテンツ一覧取得
         /// </summary>
         /// <returns></returns>
         public IEnumerable<ContentsInfoViewModel> GetAll()
         {
-            foreach(var r in context.MusicInfo)
+            foreach(var r in _context.MusicInfo)
                 yield return ViewModelFactory.GetContentsInfoVMInstance(r);
         }
 
@@ -32,7 +37,7 @@ namespace SoundServiceApi.Service
         /// <returns></returns>
         public IEnumerable<ContentsInfoViewModel> GetByArtist(string _artist)
         {
-            foreach (var r in context.MusicInfo.Where(w => w.Artist.Contains(_artist)))
+            foreach (var r in _context.MusicInfo.Where(w => w.Artist.Contains(_artist)))
                 yield return ViewModelFactory.GetContentsInfoVMInstance(r);
         }
 
@@ -43,7 +48,7 @@ namespace SoundServiceApi.Service
         /// <returns></returns>
         public MusicInfo GetByFileName(string _fileName)
         {
-            return context.MusicInfo.Where(w => w.FileName.Equals(_fileName)).FirstOrDefault();
+            return _context.MusicInfo.Where(w => w.FileName.Equals(_fileName)).FirstOrDefault();
         }
     }
 }

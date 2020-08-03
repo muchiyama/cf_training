@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Common;
 using Common.Attribute;
 using Common.CF_Logger;
+using DataAccess.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +21,15 @@ namespace SoundServiceApi.Controllers
     [ApiController]
     public class SoundController : ControllerBase
     {
-        [DependencyInjection(typeof(SoundService))]
-        private readonly SoundService service = new SoundService();
+        private readonly SoundServiceApiContext _context;
+        private readonly SoundService _service;
         private readonly CF_ILogger logger = CF_LoggerFactory.GetCFLogger();
+
+        public SoundController(SoundServiceApiContext context, SoundService service)
+        {
+            _context = context;
+            _service = service;
+        }
 
         // GET: api/Sound
         [HttpGet]
@@ -40,10 +47,10 @@ namespace SoundServiceApi.Controllers
                 logger.Info(Const.I001(Const.N003));
                 if (String.IsNullOrEmpty(fileName))
                     return this.BadRequest(Const.E002);
-                if (!service.Exist(fileName))
+                if (!_service.Exist(fileName))
                     return this.NoContent();
                 logger.Info(Const.I002(Const.N003));
-                return Ok(service.GetByFileName(fileName));
+                return Ok(_service.GetByFileName(fileName));
             }
             catch (Exception ex)
             {
@@ -67,10 +74,10 @@ namespace SoundServiceApi.Controllers
                 logger.Info(Const.I001(Const.N003));
                 if (String.IsNullOrEmpty(value.fileName))
                     return this.BadRequest(Const.E002);
-                if (!service.Exist(value.fileName))
+                if (!_service.Exist(value.fileName))
                     return this.NoContent();
                 logger.Info(Const.I002(Const.N003));
-                return Ok(service.GetByFileName(value.fileName));
+                return Ok(_service.GetByFileName(value.fileName));
             }
             catch(Exception ex)
             {

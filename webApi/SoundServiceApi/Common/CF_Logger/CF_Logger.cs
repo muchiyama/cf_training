@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Common.CF_Logger
 {
-    public class CF_Logger : CF_ILogger
+    partial class CF_Logger : CF_ILogger
     {
         /// <summary>
         /// ラップしてるロガー

@@ -6,9 +6,9 @@ namespace DataAccess.Models
 {
     public partial class SoundServiceApiContext : DbContext
     {
-        public SoundServiceApiContext()
-        {
-        }
+        //public SoundServiceApiContext()
+        //{
+        //}
 
         public SoundServiceApiContext(DbContextOptions<SoundServiceApiContext> options)
             : base(options)

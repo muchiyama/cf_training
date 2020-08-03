@@ -17,9 +17,17 @@ namespace SoundServiceApi.Controllers
     [ApiController]
     public class ContentsController : ControllerBase
     {
-        [DependencyInjection(typeof(MusicInfoService))]
-        private readonly MusicInfoService service = new MusicInfoService();
+        private readonly SoundServiceApiContext _context;
+        private readonly MusicInfoService _service;
         private readonly CF_ILogger logger = CF_LoggerFactory.GetCFLogger();
+
+        public ContentsController(SoundServiceApiContext context, MusicInfoService service)
+        {
+            _context = context;
+            _service = service;
+        }
+
+
         // GET: api/ContentsList
         /// <summary>
         /// サーバー上のコンテンツ一覧を返す
@@ -31,7 +39,7 @@ namespace SoundServiceApi.Controllers
             try
             {
                 logger.Info(Const.I001(Const.N002));
-                return Ok(service.GetAll());
+                return Ok(_service.GetAll());
             }
             catch(Exception ex)
             {
@@ -52,7 +60,7 @@ namespace SoundServiceApi.Controllers
             try
             {
                 logger.Info(Const.I001(Const.N002));
-                return Ok(service.GetByArtist(artistName));
+                return Ok(_service.GetByArtist(artistName));
             }
             catch (Exception ex)
             {

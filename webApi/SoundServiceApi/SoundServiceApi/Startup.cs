@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 
 using Microsoft.EntityFrameworkCore.Design;
 using Common;
+using SoundServiceApi.Service;
+using DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
 //using SoundServiceApi.Models;
 
 namespace SoundServiceApi
@@ -41,6 +44,15 @@ namespace SoundServiceApi
                                   .AllowAnyMethod();
                               });
             });
+
+            // DbContext‚ð“o˜^
+            services.AddDbContextPool<SoundServiceApiContext>(opts =>
+            {
+                opts.UseSqlServer(Configuration.GetConnectionString(Const.s_ConnectionString));
+            })
+            //.AddTransient<IMyService, MusicInfoService>()
+            .AddTransient<MusicInfoService>()
+            .AddTransient<SoundService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -21,6 +21,7 @@ namespace Common
         public static string s_LaunchUrls => "LaunchUrls";
         public static string s_allowCorsDomein => "allowCorsDomein";
         public static string s_CorsPolicyNames => "CorsPolicyNames";
+        public static string s_ConnectionString => "SoundServiceApi";
 
         #endregion
 

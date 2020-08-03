@@ -150,6 +150,10 @@
     </div id='container'>
 </body>
 <script>
+$('hoge').append('hogehoge');
+
+</script>
+<script>
     $("#audio_player").jPlayer({
         /* イベントハンドラ */
         ready: function () {
@@ -218,7 +222,7 @@
             xhr.onerror = () => {
                 console.log(xhr.response);
             }
-            xhr.onload = (e) => {
+            xhr.onload = function() {
                 let contents = JSON.parse(xhr.response);
                 for(c in contents) {
                     CreateContent(contents[c]);
@@ -258,5 +262,9 @@
         });
     }
     GetContents();
+</script>
+
+<script>
+    let name = 'saga' + 'mihiro';
 </script>
 </html>
